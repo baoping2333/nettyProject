@@ -30,11 +30,13 @@ public class BIOServer {
     //Handerler方法和客户端通讯
     public static void hander(Socket socket) {
         try {
+            System.out.println("线程信息"+ Thread.currentThread().getId()+"  "+Thread.currentThread().getName());
             byte[] bytes = new byte[1024];
             //通过socket获取输入流
             InputStream inputStream = socket.getInputStream();
             //循环读取数据
             while (true) {
+                System.out.println("线程信息"+ Thread.currentThread().getId()+"  "+Thread.currentThread().getName());
                 int read = inputStream.read(bytes);
                 if (read != -1) {
                     //输出数据
