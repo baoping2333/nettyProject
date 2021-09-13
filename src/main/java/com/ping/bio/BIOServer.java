@@ -15,6 +15,7 @@ public class BIOServer {
         System.out.println("服务器启动");
         while (true) {
 //            监听
+            //accept会阻塞
             final Socket socket = serverSocket.accept();
             System.out.println("连接到一个客户端");
             //如果有客户端连接，就创建一个线程与之通讯
@@ -37,7 +38,7 @@ public class BIOServer {
             //循环读取数据
             while (true) {
                 System.out.println("线程信息"+ Thread.currentThread().getId()+"  "+Thread.currentThread().getName());
-                int read = inputStream.read(bytes);
+                int read = inputStream.read(bytes);//阻塞
                 if (read != -1) {
                     //输出数据
                     System.out.println(new String(bytes, 0, read));
